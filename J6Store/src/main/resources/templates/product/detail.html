@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/index :: dynamic(~{::main})}">
+
+
+<body>
+	<main th:object="${item}">
+		<div class="row mt-2 ">
+			<div class=" col-8">
+				<div class="text-center">
+					<img th:src="@{|/assets/images/*{image}|}" class="img-fluid" alt="" />
+				</div>
+			</div>
+
+			<div class="card-body col-4">
+				<ul class="list-unstyled">
+					<li><h3 th:text="*{name}"></h3></li>
+					<li><h2 class="text-danger">$[[*{price}]]</h2></li>
+				</ul>
+			</div>
+		</div>
+		<div class=" row text-center ">
+			<a class="btn btn-success w-100 text-white mt-2"
+				th:attr="ng-click=@{|cart.add(${id})|}"> <i
+				class="fas fa-cart-plus"></i> Thêm vào giỏ hàng
+			</a>
+		</div>
+		<p class=" ml-5 mt-2 row font-weight-bold text-center">SẢN PHẨM
+			CÙNG LOẠI</p>
+		<div class="row">
+			<div class="col-md-3 "
+				th:each="p:${item.category.products}">
+				<div class="card mb-4 product-wap rounded-0 ">
+					<div class="card rounded-0 mb-4 product-wap ">
+						<a th:href="@{|/product/detail/${p.id}|}"> <img
+							th:src="@{|/assets/images/${p.image}|}"
+							class="card-img rounded-0 img-fluid d-block ">
+						</a>
+						<div
+							class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+							<ul class="list-unstyled">
+								<li><a class="btn btn-success text-white"
+									href="shop-single.html"> <i class="far fa-heart"></i>
+								</a></li>
+								<li><a class="btn btn-success text-white mt-2"
+									th:href="@{|/product/detail/${p.id}|}"> <i
+										class="far fa-eye"></i>
+								</a></li>
+								<li><a class="btn btn-success text-white mt-2"
+									th:attr="ng-click=@{|cart.add(${p.id})|}"> <i
+										class="fas fa-cart-plus"></i>
+								</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="card-body">
+						<a th:href="@{|/product/detail/${p.id}|}"
+							class="h3 text-decoration-none" th:text="${p.name}"></a>
+						<ul
+							class="w-100 list-unstyled d-flex justify-content-between mb-0">
+							<li>M/L/X/XL</li>
+							<li class="pt-2"><span
+								class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
+								<span
+								class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
+								<span
+								class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
+								<span
+								class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
+								<span
+								class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
+							</li>
+						</ul>
+						<ul class="list-unstyled d-flex justify-content-center mb-1">
+							<li><i class="text-warning fa fa-star"></i> <i
+								class="text-warning fa fa-star"></i> <i
+								class="text-warning fa fa-star"></i> <i
+								class="text-muted fa fa-star"></i> <i
+								class="text-muted fa fa-star"></i></li>
+						</ul>
+						<p class="text-center mb-0">$[[${p.price}]]</p>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+
+		<!-- <form action="/products/cartItem" method="get">
+						<input type="text" value="${product.id}" name="productId" hidden />
+						<button class="btn btn-info">Add to Cart</button>
+					</form> -->
+
+
+	</main>
+
+</body>
+</html>

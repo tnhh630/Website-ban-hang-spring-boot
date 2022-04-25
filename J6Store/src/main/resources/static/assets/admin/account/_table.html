@@ -1,0 +1,52 @@
+
+<div class="card ">
+	<div class="card-header">ACCOUNT LIST</div>
+	<table class="table">
+		<thead class="bg-success" style="font-variant: small-caps;">
+			<tr>
+				<th scope="col">Username</th>
+				<th scope="col">Password</th>
+				<th scope="col">Fullname</th>
+				<th scope="col">Email</th>
+				<th scope="col">Photo</th>
+				<th scope="col">Role</th>
+				
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in pager.items">
+				<th>{{item.account.username}}</th>
+				<th>{{item.account.password}}</th>
+				<th>{{item.account.fullname}}</th>
+				<th>{{item.account.email}}</th>
+				<th>{{item.account.photo}}</th>
+				<th>{{item.role.name}}</th>
+				
+				<th>
+					<div class="btn-group btn-group-xs">
+						<button ng-click="edit(item)" class="btn btn-warning ">Edit</button>
+						<button ng-click="delete(item)" class="btn btn-danger ">Delete</button>
+					</div>
+				</th>
+			</tr>
+
+
+		</tbody>
+	</table>
+	<div class="panel-footer text-center">
+		<button ng-click="pager.first()" class="btn btn-danger">
+			<i class="fa-solid fa-backward-fast"></i>
+		</button>
+		<button ng-click="pager.prev()" class="btn btn-primary">
+			<i class="fa-solid fa-angles-left"></i>
+		</button>
+		<button  class="btn btn-success">{{pager.page+1}} of {{pager.count}}</button>
+		<button ng-click="pager.next()" class="btn btn-primary">
+			 <i class="fa-solid fa-angles-right"></i>
+		</button>
+		<button ng-click="pager.last()" class="btn btn-danger">
+			<i class="fa-solid fa-forward-fast"></i>
+		</button>
+	</div>
+</div>
