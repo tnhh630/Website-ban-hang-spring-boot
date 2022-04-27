@@ -25,6 +25,22 @@
 		}
 		h1{
 			color : white ; 
+			animation: colorBackground 0.01s infinite;
+         -webkit-animation: colorBackground 0.1s infinite;
+         -moz-animation: colorBackground 0.1s infinite;
+         -o-animation: colorBackground 0.01s infinite
+         }
+         @keyframes colorBackground {
+         0% {
+         background-color: yellowgreen;
+         color: white;
+         text-shadow:  0 0 10px white;
+         }
+         50% {
+         background-color: red;
+         color: yellow;
+         text-shadow: yellow 0 0 10px;
+         }
 		}
 		
 	</style>
